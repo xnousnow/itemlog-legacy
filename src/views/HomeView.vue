@@ -1,3 +1,3 @@
 <template>
-  <span class="block w-screen mt-10 text-xl text-center">Hello, world!</span>
+  <span class="text-xl">Hello, world!</span>
 </template>

@@ -12,6 +12,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <ItemMenu />
-  <RouterView />
+  <div class="flex w-screen">
+    <ItemMenu />
+    <RouterView />
+  </div>
 </template>
