@@ -1,6 +1,6 @@
 <script lang="ts">
 import { RouterView } from 'vue-router'
-import ItemMenu from './components/ItemMenu.vue'
+import ItemMenu from './components/SidebarMenu.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
