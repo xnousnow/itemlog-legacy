@@ -8,6 +8,7 @@ interface Log {
   month: number
   day: number
   text: string
+  editmode?: boolean
 }
 interface Item {
   name: string

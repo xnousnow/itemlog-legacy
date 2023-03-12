@@ -8,6 +8,7 @@ interface Log {
   month: number
   day: number
   text: string
+  editmode?: boolean
 }
 interface Item {
   name: string
@@ -25,6 +26,18 @@ export default defineComponent({
     return {
       item: this.items[this.$route.query.hash as string],
       body: this.items[this.$route.query.hash as string].body
+    }
+  },
+  methods: {
+    createLog() {
+      const date = new Date()
+      this.body?.push({
+        year: date.getFullYear(),
+        month: date.getMonth() + 1,
+        day: date.getDate(),
+        text: '',
+        editmode: true
+      })
     }
   },
   watch: {
@@ -49,6 +62,7 @@ export default defineComponent({
       :month="log.month"
       :day="log.day"
       :body="log.text"
+      :editmode="log.editmode"
     />
     <button
       class="p-2 rounded-lg hover:bg-neutral-50 active:bg-neutral-100 text-neutral-400 hover:text-neutral-500"
