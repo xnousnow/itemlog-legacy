@@ -1,19 +1,19 @@
 <script lang="ts">
 import { RouterView } from 'vue-router'
-import ItemMenu from './components/SidebarMenu.vue'
+import SidebarMenu from './components/SidebarMenu.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
   components: {
     RouterView,
-    ItemMenu
+    SidebarMenu
   }
 })
 </script>
 
 <template>
   <div class="flex items-start w-screen">
-    <ItemMenu />
+    <SidebarMenu />
     <RouterView />
   </div>
 </template>
