@@ -19,5 +19,12 @@ export default defineComponent({
       :day="1 + i"
       body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel."
     />
+    <LogItem
+      :year="2023"
+      :month="7"
+      :day="5"
+      body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel."
+      :editmode="true"
+    />
   </ul>
 </template>
