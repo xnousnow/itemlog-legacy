@@ -3,6 +3,12 @@ import { PlusIcon } from '@heroicons/vue/24/solid'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  props: {
+    items: {
+      type: Array<string>,
+      required: true
+    }
+  },
   components: {
     PlusIcon
   }
@@ -19,12 +25,11 @@ export default defineComponent({
     </div>
     <ul class="mx-3 cursor-pointer select-none">
       <li
-        v-for="i in 10"
-        :key="i"
+        v-for="item in items"
+        :key="item"
         class="p-2 pl-4 rounded-lg hover:bg-neutral-100 active:filter active:bg-neutral-200"
-        :class="{ active: i === 3 }"
       >
-        Item {{ i }}
+        {{ item }}
       </li>
     </ul>
   </aside>
