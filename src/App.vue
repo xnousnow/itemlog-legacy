@@ -12,7 +12,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="flex w-screen">
+  <div class="flex items-start w-screen">
     <ItemMenu />
     <RouterView />
   </div>
