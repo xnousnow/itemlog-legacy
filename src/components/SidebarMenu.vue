@@ -19,14 +19,18 @@ export default defineComponent({
   methods: {
     createItem() {
       if (this.isItemNameDuplicate) return
-      if (this.newItemName.replace(/[ ]/g, '') != '') this.$emit('createItem', this.newItemName)
+      if (this.newItemName.replace(/[\u200B-\u200D\uFEFF ]/g, '') != '')
+        this.$emit('createItem', this.newItemName)
       this.newItemName = ''
       this.showNewItemInput = false
     }
   },
   watch: {
     newItemName() {
-      this.isItemNameDuplicate = this.items.includes(this.newItemName)
+      const items = this.items.map((item) => {
+        return item.toLowerCase().replace(/[\u200B-\u200D\uFEFF ]/g, '')
+      })
+      this.isItemNameDuplicate = items.includes(this.newItemName.toLowerCase().replace(/[ ]/g, ''))
     }
   },
   components: {
