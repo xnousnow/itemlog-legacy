@@ -1,5 +1,6 @@
 <script lang="ts">
 import LogItem from '../components/LogItem.vue'
+import { PlusIcon } from '@heroicons/vue/24/solid'
 import { defineComponent } from 'vue'
 
 interface Log {
@@ -33,7 +34,8 @@ export default defineComponent({
     }
   },
   components: {
-    LogItem
+    LogItem,
+    PlusIcon
   }
 })
 </script>
@@ -48,5 +50,11 @@ export default defineComponent({
       :day="log.day"
       :body="log.text"
     />
+    <button
+      class="p-2 rounded-lg hover:bg-neutral-50 active:bg-neutral-100 text-neutral-400 hover:text-neutral-500"
+      @click="createLog"
+    >
+      <PlusIcon class="w-6" />
+    </button>
   </ul>
 </template>
