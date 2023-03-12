@@ -19,7 +19,7 @@ export default defineComponent({
   methods: {
     createItem() {
       if (this.isItemNameDuplicate) return
-      this.$emit('createItem', this.newItemName)
+      if (this.newItemName.replace(/[ ]/g, '') != '') this.$emit('createItem', this.newItemName)
       this.newItemName = ''
       this.showNewItemInput = false
     }
