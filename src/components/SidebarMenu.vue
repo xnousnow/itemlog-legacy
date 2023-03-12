@@ -2,10 +2,14 @@
 import { PlusIcon, CheckIcon } from '@heroicons/vue/24/solid'
 import { defineComponent } from 'vue'
 
+interface Item {
+  name: string
+}
+
 export default defineComponent({
   props: {
     items: {
-      type: Array<string>,
+      type: Object as () => Record<string, Item>,
       required: true
     }
   },
@@ -27,10 +31,16 @@ export default defineComponent({
   },
   watch: {
     newItemName() {
-      const items = this.items.map((item) => {
-        return item.toLowerCase().replace(/[\u200B-\u200D\uFEFF ]/g, '')
+      const items = this.items
+      const name = this.newItemName.toLowerCase().replace(/[\u200B-\u200D\uFEFF ]/g, '')
+      let isItemNameDuplicate = false
+      Object.keys(items).forEach((key: string | number) => {
+        if (items[key].name.toLowerCase().replace(/[\u200B-\u200D\uFEFF ]/g, '') == name) {
+          isItemNameDuplicate = true
+          return
+        }
       })
-      this.isItemNameDuplicate = items.includes(this.newItemName.toLowerCase().replace(/[ ]/g, ''))
+      this.isItemNameDuplicate = isItemNameDuplicate
     }
   },
   components: {
@@ -50,11 +60,11 @@ export default defineComponent({
     </div>
     <ul class="mx-3 cursor-pointer select-none">
       <li
-        v-for="item in items"
-        :key="item"
+        v-for="(item, key) in items"
+        :key="key"
         class="p-2 pl-4 rounded-lg hover:bg-neutral-100 active:filter active:bg-neutral-200"
       >
-        {{ item }}
+        {{ item.name }}
       </li>
       <li v-show="showNewItemInput">
         <div class="flex gap-2">
