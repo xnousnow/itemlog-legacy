@@ -9,6 +9,11 @@ export default defineComponent({
       items: ['Item 1', 'Item 2', 'Item 3']
     }
   },
+  methods: {
+    createItem(name: string) {
+      this.items.push(name)
+    }
+  },
   components: {
     RouterView,
     SidebarMenu
@@ -18,7 +23,7 @@ export default defineComponent({
 
 <template>
   <div class="flex items-start w-screen">
-    <SidebarMenu :items="items" />
+    <SidebarMenu :items="items" @createItem="createItem" />
     <RouterView />
   </div>
 </template>
