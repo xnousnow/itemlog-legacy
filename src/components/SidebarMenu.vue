@@ -12,15 +12,25 @@ export default defineComponent({
   data() {
     return {
       showNewItemInput: false,
-      newItemName: ''
+      newItemName: '',
+      isItemNameDuplicate: false
     }
   },
   methods: {
     createItem() {
-      if (this.newItemName === '') return
-      this.$emit('createItem', this.newItemName)
+      if (this.isItemNameDuplicate) return
+      if (this.newItemName.replace(/[\u200B-\u200D\uFEFF ]/g, '') != '')
+        this.$emit('createItem', this.newItemName)
       this.newItemName = ''
       this.showNewItemInput = false
+    }
+  },
+  watch: {
+    newItemName() {
+      const items = this.items.map((item) => {
+        return item.toLowerCase().replace(/[\u200B-\u200D\uFEFF ]/g, '')
+      })
+      this.isItemNameDuplicate = items.includes(this.newItemName.toLowerCase().replace(/[ ]/g, ''))
     }
   },
   components: {
@@ -46,16 +56,22 @@ export default defineComponent({
       >
         {{ item }}
       </li>
-      <li class="flex gap-2" v-show="showNewItemInput">
-        <input
-          class="p-2 pl-4 transition duration-200 ease-in-out rounded-lg grow bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
-          placeholder="New item"
-          v-model="newItemName"
-          @keyup.enter="createItem"
-        />
-        <button class="p-2 rounded-lg hover:bg-blue-50" @click="createItem">
-          <CheckIcon class="w-6 text-blue-600 cursor-pointer" />
-        </button>
+      <li v-show="showNewItemInput">
+        <div class="flex gap-2">
+          <input
+            class="p-2 pl-4 transition duration-200 ease-in-out rounded-lg grow bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            :class="{ 'ring-2 ring-red-500 focus:ring-red-500': isItemNameDuplicate }"
+            placeholder="New item"
+            v-model="newItemName"
+            @keyup.enter="createItem"
+          />
+          <button class="p-2 rounded-lg hover:bg-blue-50" @click="createItem">
+            <CheckIcon class="w-6 text-blue-600 cursor-pointer" />
+          </button>
+        </div>
+        <span class="ml-2 text-xs text-red-600 cursor-default" v-show="isItemNameDuplicate">
+          Item name must be unique
+        </span>
       </li>
     </ul>
   </aside>
