@@ -42,6 +42,9 @@ export default defineComponent({
     },
     saveLog(index: number, text: string) {
       this.$emit('save', index, text)
+    },
+    removeLog(index: number) {
+      this.$emit('remove', index)
     }
   },
   watch: {
@@ -69,6 +72,7 @@ export default defineComponent({
       :body="log.text"
       :editmode="log.editmode"
       @save="saveLog"
+      @remove="removeLog"
     />
     <button
       class="p-2 rounded-lg hover:bg-neutral-50 active:bg-neutral-100 text-neutral-400 hover:text-neutral-500"
