@@ -5,6 +5,10 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'LogItem',
   props: {
+    index: {
+      type: Number,
+      required: true
+    },
     year: {
       type: Number,
       required: true
@@ -61,12 +65,14 @@ export default defineComponent({
         <button
           class="flex items-center justify-center p-2 grow rounded-lg active:filter active:brightness-[0.98] bg-blue-500 hover:bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-300"
           title="Save"
+          @click="$emit('save', index, editedBody)"
         >
           <CheckIcon class="w-6" />
         </button>
         <button
           class="flex items-center justify-center p-2 rounded-lg active:filter active:brightness-[0.98] bg-red-500 hover:bg-red-600 text-white focus:outline-none focus:ring-2 focus:ring-red-300"
           title="Cancel"
+          @click="$emit('remove', index)"
         >
           <XMarkIcon class="w-6" />
         </button>

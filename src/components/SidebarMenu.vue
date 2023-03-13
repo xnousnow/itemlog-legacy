@@ -3,8 +3,16 @@ import { RouterLink } from 'vue-router'
 import { PlusIcon, CheckIcon } from '@heroicons/vue/24/solid'
 import { defineComponent } from 'vue'
 
+interface Log {
+  year: number
+  month: number
+  day: number
+  text: string
+  editmode?: boolean
+}
 interface Item {
   name: string
+  body: Record<string, Log>
 }
 
 export default defineComponent({
