@@ -1,5 +1,5 @@
 <script lang="ts">
-import { CheckIcon, XMarkIcon } from '@heroicons/vue/20/solid'
+import { TrashIcon, CheckIcon, XMarkIcon } from '@heroicons/vue/20/solid'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -40,6 +40,7 @@ export default defineComponent({
     this.editedBody = this.body
   },
   components: {
+    TrashIcon,
     CheckIcon,
     XMarkIcon
   }
@@ -47,7 +48,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <ul class="flex max-w-[50rem] w-full gap-3">
+  <ul class="flex max-w-[50rem] w-full gap-3 group">
     <div>
       <div class="flex font-semibold">
         <span class="relative">{{ month }}</span>
@@ -78,5 +79,11 @@ export default defineComponent({
         </button>
       </div>
     </div>
+    <button
+      v-show="!editmode"
+      class="flex items-center justify-center invisible w-10 h-10 p-2 rounded-lg -right-5 group-hover:visible bg-neutral-50 hover:bg-neutral-100 active:bg-neutral-100 text-neutral-400 hover:text-neutral-500"
+    >
+      <TrashIcon class="w-6" />
+    </button>
   </ul>
 </template>
