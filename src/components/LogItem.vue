@@ -47,7 +47,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <ul class="flex max-w-[50rem] w-full gap-3">
+  <li class="flex max-w-[50rem] w-full gap-3">
     <div>
       <div class="flex font-semibold">
         <span class="relative">{{ month }}</span>
@@ -78,5 +78,5 @@ export default defineComponent({
         </button>
       </div>
     </div>
-  </ul>
+  </li>
 </template>
