@@ -82,6 +82,7 @@ export default defineComponent({
     <button
       v-show="!editmode"
       class="flex items-center justify-center invisible w-10 h-10 p-2 rounded-lg -right-5 group-hover:visible bg-neutral-50 hover:bg-neutral-100 active:bg-neutral-100 text-neutral-400 hover:text-neutral-500"
+      @click="$emit('remove', index)"
     >
       <TrashIcon class="w-6" />
     </button>
