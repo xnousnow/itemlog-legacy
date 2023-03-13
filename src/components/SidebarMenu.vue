@@ -12,7 +12,7 @@ interface Log {
 }
 interface Item {
   name: string
-  body?: Array<Log>
+  body: Record<string, Log>
 }
 
 export default defineComponent({

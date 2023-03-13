@@ -14,7 +14,7 @@ interface Log {
 }
 interface Item {
   name: string
-  body?: Array<Log>
+  body: Record<string, Log>
 }
 
 export default defineComponent({
@@ -23,36 +23,72 @@ export default defineComponent({
       items: {
         ab8cfd: {
           name: 'Item 1',
-          body: [
-            {
+          body: {
+            0: {
               year: 2023,
               month: 1,
               day: 1,
               text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
+            },
+            1: {
+              year: 2023,
+              month: 2,
+              day: 13,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
+            },
+            3: {
+              year: 2023,
+              month: 2,
+              day: 15,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
+            },
+            4: {
+              year: 2023,
+              month: 2,
+              day: 27,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
             }
-          ]
+          }
         },
         fdbe97: {
           name: 'Item 2',
-          body: [
-            {
-              year: 2023,
-              month: 1,
-              day: 2,
-              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
-            }
-          ]
-        },
-        ab472c: {
-          name: 'Item 3',
-          body: [
-            {
+          body: {
+            0: {
               year: 2023,
               month: 1,
               day: 3,
               text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
+            },
+            1: {
+              year: 2023,
+              month: 3,
+              day: 9,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
             }
-          ]
+          }
+        },
+        ab472c: {
+          name: 'Item 3',
+          body: {
+            1: {
+              year: 2023,
+              month: 1,
+              day: 1,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
+            },
+            3: {
+              year: 2023,
+              month: 1,
+              day: 24,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
+            },
+            4: {
+              year: 2023,
+              month: 2,
+              day: 3,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet dui porta, accumsan turpis sed, rhoncus urna. Aliquam porta consectetur sapien, vel sagittis turpis molestie vel.'
+            }
+          }
         }
       } as Record<string, Item>
     }
@@ -60,7 +96,14 @@ export default defineComponent({
   methods: {
     createItem(name: string) {
       const id: string = sha256(name + new Date().toISOString()).toString()
-      this.items[id] = { name }
+      this.items[id] = {
+        name,
+        body: {}
+      }
+    },
+    changeItem(index: number, text: string) {
+      this.items[this.$route.query.hash as string].body[index].text = text
+      this.items[this.$route.query.hash as string].body[index].editmode = false
     }
   },
   components: {
@@ -73,6 +116,6 @@ export default defineComponent({
 <template>
   <div class="flex items-start w-screen">
     <SidebarMenu :items="items" @createItem="createItem" />
-    <RouterView :items="items" />
+    <RouterView :items="items" @save="changeItem" />
   </div>
 </template>

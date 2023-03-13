@@ -12,7 +12,7 @@ interface Log {
 }
 interface Item {
   name: string
-  body?: Array<Log>
+  body: Record<string, Log>
 }
 
 export default defineComponent({
@@ -31,13 +31,17 @@ export default defineComponent({
   methods: {
     createLog() {
       const date = new Date()
-      this.body?.push({
+      const index = Math.max(...Object.keys(this.body).map((key) => Number(key))) + 1
+      this.body[index] = {
         year: date.getFullYear(),
         month: date.getMonth() + 1,
         day: date.getDate(),
         text: '',
         editmode: true
-      })
+      }
+    },
+    saveLog(index: number, text: string) {
+      this.$emit('save', index, text)
     }
   },
   watch: {
@@ -56,13 +60,15 @@ export default defineComponent({
 <template>
   <ul class="flex flex-col items-center justify-center gap-5 p-10 grow">
     <LogItem
-      v-for="(log, hash) in body"
-      :key="hash"
+      v-for="(log, index) in body"
+      :index="parseInt(index)"
+      :key="index"
       :year="log.year"
       :month="log.month"
       :day="log.day"
       :body="log.text"
       :editmode="log.editmode"
+      @save="saveLog"
     />
     <button
       class="p-2 rounded-lg hover:bg-neutral-50 active:bg-neutral-100 text-neutral-400 hover:text-neutral-500"
