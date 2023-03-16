@@ -9,6 +9,7 @@ interface Log {
   day: number
   text: string
   editmode?: boolean
+  xToDelete?: boolean
 }
 interface Item {
   name: string

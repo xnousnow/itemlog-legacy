@@ -11,6 +11,7 @@ interface Log {
   day: number
   text: string
   editmode?: boolean
+  xToDelete?: boolean
 }
 interface Item {
   name: string
@@ -34,6 +35,10 @@ export default defineComponent({
     changeItem(index: number, text: string) {
       this.items[this.$route.query.hash as string].body[index].text = text
       this.items[this.$route.query.hash as string].body[index].editmode = false
+      this.items[this.$route.query.hash as string].body[index].xToDelete = false
+    },
+    editItem(index: number) {
+      this.items[this.$route.query.hash as string].body[index].editmode = true
     },
     removeItem(index: number) {
       delete this.items[this.$route.query.hash as string].body[index]
@@ -49,6 +54,6 @@ export default defineComponent({
 <template>
   <div class="flex items-start w-screen">
     <SidebarMenu :items="items" @createItem="createItem" />
-    <RouterView :items="items" @save="changeItem" @remove="removeItem" />
+    <RouterView :items="items" @save="changeItem" @edit="editItem" @remove="removeItem" />
   </div>
 </template>
