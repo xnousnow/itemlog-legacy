@@ -25,7 +25,7 @@ export default defineComponent({
   data() {
     return {
       item: this.items[this.$route.query.hash as string],
-      body: this.items[this.$route.query.hash as string].body
+      body: this.items[this.$route.query.hash as string]?.body
     }
   },
   methods: {
