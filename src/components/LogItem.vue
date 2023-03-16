@@ -56,7 +56,7 @@ export default defineComponent({
         <span class="self-end">{{ day }}</span>
       </div>
     </div>
-    <p v-if="!editmode">{{ body }}</p>
+    <p v-if="!editmode" class="grow">{{ body }}</p>
     <div v-else class="flex flex-col w-full gap-2">
       <textarea
         v-model="editedBody"
