@@ -31,7 +31,10 @@ export default defineComponent({
   methods: {
     createLog() {
       const date = new Date()
-      const index = Math.max(...Object.keys(this.body).map((key) => Number(key))) + 1
+      const index =
+        Object.keys(this.body).length == 0
+          ? 0
+          : Math.max(...Object.keys(this.body).map((key) => Number(key))) + 1
       this.body[index] = {
         year: date.getFullYear(),
         month: date.getMonth() + 1,
