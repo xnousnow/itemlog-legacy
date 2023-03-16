@@ -1,5 +1,5 @@
 <script lang="ts">
-import { TrashIcon, CheckIcon, XMarkIcon } from '@heroicons/vue/20/solid'
+import { TrashIcon, CheckIcon, PencilSquareIcon, XMarkIcon } from '@heroicons/vue/20/solid'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -42,6 +42,7 @@ export default defineComponent({
   components: {
     TrashIcon,
     CheckIcon,
+    PencilSquareIcon,
     XMarkIcon
   }
 })
@@ -81,10 +82,19 @@ export default defineComponent({
     </div>
     <button
       v-show="!editmode"
-      class="flex items-center justify-center invisible w-10 h-10 p-2 rounded-lg -right-5 group-hover:visible bg-neutral-50 hover:bg-neutral-100 active:bg-neutral-100 text-neutral-400 hover:text-neutral-500"
-      @click="$emit('remove', index)"
+      class="flex items-center justify-center invisible h-10 p-2 -right-5 group-hover:visible text-neutral-400"
     >
-      <TrashIcon class="w-6" />
+      <div
+        class="p-2 rounded-l-lg hover:bg-neutral-100 active:bg-neutral-100 hover:text-neutral-500 bg-neutral-50"
+      >
+        <PencilSquareIcon class="w-6" />
+      </div>
+      <div
+        class="p-2 rounded-r-lg hover:bg-neutral-100 active:bg-neutral-100 hover:text-neutral-500 bg-neutral-50"
+        @click="$emit('remove', index)"
+      >
+        <TrashIcon class="w-6" />
+      </div>
     </button>
   </li>
 </template>
