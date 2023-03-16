@@ -11,6 +11,7 @@ interface Log {
   day: number
   text: string
   editmode?: boolean
+  xToDelete?: boolean
 }
 interface Item {
   name: string
@@ -34,6 +35,7 @@ export default defineComponent({
     changeItem(index: number, text: string) {
       this.items[this.$route.query.hash as string].body[index].text = text
       this.items[this.$route.query.hash as string].body[index].editmode = false
+      this.items[this.$route.query.hash as string].body[index].xToDelete = false
     },
     editItem(index: number) {
       this.items[this.$route.query.hash as string].body[index].editmode = true

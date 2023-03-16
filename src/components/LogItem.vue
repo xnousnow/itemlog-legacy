@@ -29,6 +29,11 @@ export default defineComponent({
       type: Boolean,
       required: false,
       default: false
+    },
+    xToDelete: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data() {
@@ -72,9 +77,18 @@ export default defineComponent({
           <CheckIcon class="w-6" />
         </button>
         <button
+          v-if="xToDelete"
           class="flex items-center justify-center p-2 rounded-lg active:filter active:brightness-[0.98] bg-red-500 hover:bg-red-600 text-white focus:outline-none focus:ring-2 focus:ring-red-300"
           title="Cancel"
           @click="$emit('remove', index)"
+        >
+          <XMarkIcon class="w-6" />
+        </button>
+        <button
+          v-else
+          class="flex items-center justify-center p-2 rounded-lg active:filter active:brightness-[0.98] bg-red-500 hover:bg-red-600 text-white focus:outline-none focus:ring-2 focus:ring-red-300"
+          title="Cancel"
+          @click="$emit('save', index, body)"
         >
           <XMarkIcon class="w-6" />
         </button>

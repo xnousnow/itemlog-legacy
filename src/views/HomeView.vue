@@ -9,6 +9,7 @@ interface Log {
   day: number
   text: string
   editmode?: boolean
+  xToDelete?: boolean
 }
 interface Item {
   name: string
@@ -40,7 +41,8 @@ export default defineComponent({
         month: date.getMonth() + 1,
         day: date.getDate(),
         text: '',
-        editmode: true
+        editmode: true,
+        xToDelete: true
       }
     },
     saveLog(index: number, text: string) {
@@ -77,6 +79,7 @@ export default defineComponent({
       :day="log.day"
       :body="log.text"
       :editmode="log.editmode"
+      :xToDelete="log.xToDelete"
       @save="saveLog"
       @edit="editLog"
       @remove="removeLog"
