@@ -96,16 +96,16 @@ export default defineComponent({
     </div>
     <button
       v-show="!editmode"
-      class="flex items-center justify-center invisible h-10 p-2 -right-5 group-hover:visible text-neutral-400"
+      class="flex flex-col items-center justify-center invisible h-10 p-2 -right-5 group-hover:visible text-neutral-400"
     >
       <div
-        class="p-2 rounded-l-lg hover:bg-neutral-100 active:bg-neutral-100 hover:text-neutral-500 bg-neutral-50"
+        class="p-2 rounded-t-lg hover:bg-neutral-100 active:bg-neutral-100 hover:text-neutral-500 bg-neutral-50"
         @click="$emit('edit', index)"
       >
         <PencilSquareIcon class="w-6" />
       </div>
       <div
-        class="p-2 rounded-r-lg hover:bg-neutral-100 active:bg-neutral-100 hover:text-neutral-500 bg-neutral-50"
+        class="p-2 rounded-b-lg hover:bg-neutral-100 active:bg-neutral-100 hover:text-neutral-500 bg-neutral-50"
         @click="$emit('remove', index)"
       >
         <TrashIcon class="w-6" />
