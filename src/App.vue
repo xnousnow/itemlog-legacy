@@ -35,6 +35,9 @@ export default defineComponent({
       this.items[this.$route.query.hash as string].body[index].text = text
       this.items[this.$route.query.hash as string].body[index].editmode = false
     },
+    editItem(index: number) {
+      this.items[this.$route.query.hash as string].body[index].editmode = true
+    },
     removeItem(index: number) {
       delete this.items[this.$route.query.hash as string].body[index]
     }
@@ -49,6 +52,6 @@ export default defineComponent({
 <template>
   <div class="flex items-start w-screen">
     <SidebarMenu :items="items" @createItem="createItem" />
-    <RouterView :items="items" @save="changeItem" @remove="removeItem" />
+    <RouterView :items="items" @save="changeItem" @edit="editItem" @remove="removeItem" />
   </div>
 </template>

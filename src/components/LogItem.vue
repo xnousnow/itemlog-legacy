@@ -86,6 +86,7 @@ export default defineComponent({
     >
       <div
         class="p-2 rounded-l-lg hover:bg-neutral-100 active:bg-neutral-100 hover:text-neutral-500 bg-neutral-50"
+        @click="$emit('edit', index)"
       >
         <PencilSquareIcon class="w-6" />
       </div>

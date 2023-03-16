@@ -46,6 +46,9 @@ export default defineComponent({
     saveLog(index: number, text: string) {
       this.$emit('save', index, text)
     },
+    editLog(index: number) {
+      this.$emit('edit', index)
+    },
     removeLog(index: number) {
       this.$emit('remove', index)
     }
@@ -75,6 +78,7 @@ export default defineComponent({
       :body="log.text"
       :editmode="log.editmode"
       @save="saveLog"
+      @edit="editLog"
       @remove="removeLog"
     />
     <button
