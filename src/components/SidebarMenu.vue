@@ -114,7 +114,7 @@ export default defineComponent({
 </template>
 
 <style>
-a.active {
-  @apply bg-neutral-100 hover:bg-neutral-100;
+li.active {
+  @apply bg-neutral-100;
 }
 </style>
