@@ -1,6 +1,6 @@
 <script lang="ts">
-import { RouterLink } from 'vue-router'
 import { PlusIcon, CheckIcon } from '@heroicons/vue/24/solid'
+import { TrashIcon } from '@heroicons/vue/20/solid'
 import { defineComponent } from 'vue'
 
 interface Log {
@@ -37,6 +37,10 @@ export default defineComponent({
         this.$emit('createItem', this.newItemName)
       this.newItemName = ''
       this.showNewItemInput = false
+    },
+    deleteItem(event: Event, id: string) {
+      event.stopPropagation()
+      this.$emit('delete', id)
     }
   },
   watch: {
@@ -55,8 +59,8 @@ export default defineComponent({
   },
   components: {
     PlusIcon,
-    CheckIcon,
-    RouterLink
+    TrashIcon,
+    CheckIcon
   }
 })
 </script>
@@ -70,15 +74,24 @@ export default defineComponent({
       </button>
     </div>
     <ul class="mx-3 cursor-pointer select-none">
-      <RouterLink
+      <li
         v-for="(item, key) in items"
         :key="key"
-        :to="{ query: { hash: key } }"
-        class="block p-2 pl-4 rounded-lg hover:bg-neutral-100 active:filter active:bg-neutral-200"
+        class="relative flex p-2 pl-4 rounded-lg hover:bg-neutral-50 group"
         :class="{ active: $route.query.hash == key }"
+        @click="$router.push({ query: { hash: key } })"
       >
-        {{ item.name }}
-      </RouterLink>
+        <span class="grow">
+          {{ item.name }}
+        </span>
+        <button
+          class="absolute -translate-y-1/2 top-1/2 hover:text-neutral-500 text-neutral-400 right-2 group-hover:block"
+          :class="{ hidden: $route.query.hash != key }"
+          @click="deleteItem($event, key)"
+        >
+          <TrashIcon class="w-5" />
+        </button>
+      </li>
       <li v-show="showNewItemInput">
         <div class="flex gap-2">
           <input
@@ -101,7 +114,7 @@ export default defineComponent({
 </template>
 
 <style>
-a.active {
+li.active {
   @apply bg-neutral-100 hover:bg-neutral-100;
 }
 </style>
