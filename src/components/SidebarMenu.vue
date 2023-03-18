@@ -1,5 +1,4 @@
 <script lang="ts">
-import { RouterLink } from 'vue-router'
 import { PlusIcon, CheckIcon } from '@heroicons/vue/24/solid'
 import { defineComponent } from 'vue'
 
@@ -56,7 +55,6 @@ export default defineComponent({
   components: {
     PlusIcon,
     CheckIcon,
-    RouterLink
   }
 })
 </script>
@@ -70,15 +68,15 @@ export default defineComponent({
       </button>
     </div>
     <ul class="mx-3 cursor-pointer select-none">
-      <RouterLink
+      <li
         v-for="(item, key) in items"
         :key="key"
-        :to="{ query: { hash: key } }"
         class="block p-2 pl-4 rounded-lg hover:bg-neutral-100 active:filter active:bg-neutral-200"
         :class="{ active: $route.query.hash == key }"
+        @click="$router.push({ query: { hash: key } })"
       >
         {{ item.name }}
-      </RouterLink>
+      </li>
       <li v-show="showNewItemInput">
         <div class="flex gap-2">
           <input
