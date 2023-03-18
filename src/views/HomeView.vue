@@ -69,7 +69,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <ul v-if="body" class="flex flex-col items-center justify-center gap-5 p-10 grow">
+  <ul v-if="body" class="flex flex-col items-center justify-center p-10 grow">
     <LogItem
       v-for="(log, index) in body"
       :index="parseInt(index)"
