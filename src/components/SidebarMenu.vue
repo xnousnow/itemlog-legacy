@@ -106,7 +106,7 @@ export default defineComponent({
           </button>
         </div>
         <span class="ml-2 text-xs text-red-600 cursor-default" v-show="isItemNameDuplicate">
-          Item name must be unique
+          {{ $t('sidebar.duplicateItemName') }}
         </span>
       </li>
     </ul>
