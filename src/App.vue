@@ -32,6 +32,11 @@ export default defineComponent({
         body: {}
       }
     },
+    deleteItem(id: string) {
+      console.log('it pushed')
+      this.$router.push({ query: { hash: 'deleted' } })
+      delete this.items[id]
+    },
     changeLog(index: number, text: string) {
       this.items[this.$route.query.hash as string].body[index].text = text
       this.items[this.$route.query.hash as string].body[index].editmode = false
@@ -53,7 +58,7 @@ export default defineComponent({
 
 <template>
   <div class="flex items-start w-screen">
-    <SidebarMenu :items="items" @createItem="createItem" />
+    <SidebarMenu :items="items" @createItem="createItem" @delete="deleteItem" />
     <RouterView :items="items" @save="changeLog" @edit="editLog" @remove="removeLog" />
   </div>
 </template>

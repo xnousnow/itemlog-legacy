@@ -37,6 +37,10 @@ export default defineComponent({
         this.$emit('createItem', this.newItemName)
       this.newItemName = ''
       this.showNewItemInput = false
+    },
+    deleteItem(event: Event, id: string) {
+      event.stopPropagation()
+      this.$emit('delete', id)
     }
   },
   watch: {
@@ -82,6 +86,7 @@ export default defineComponent({
         </span>
         <button
           class="absolute -translate-y-1/2 top-1/2 hover:text-neutral-500 text-neutral-400 right-2"
+          @click="deleteItem($event, key)"
         >
           <TrashIcon class="w-5" />
         </button>
