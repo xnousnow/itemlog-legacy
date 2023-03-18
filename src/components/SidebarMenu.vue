@@ -1,5 +1,6 @@
 <script lang="ts">
 import { PlusIcon, CheckIcon } from '@heroicons/vue/24/solid'
+import { TrashIcon } from '@heroicons/vue/20/solid'
 import { defineComponent } from 'vue'
 
 interface Log {
@@ -54,6 +55,7 @@ export default defineComponent({
   },
   components: {
     PlusIcon,
+    TrashIcon,
     CheckIcon
   }
 })
@@ -71,11 +73,16 @@ export default defineComponent({
       <li
         v-for="(item, key) in items"
         :key="key"
-        class="block p-2 pl-4 rounded-lg hover:bg-neutral-100 active:filter active:bg-neutral-200"
+        class="relative flex p-2 pl-4 rounded-lg hover:bg-neutral-100"
         :class="{ active: $route.query.hash == key }"
         @click="$router.push({ query: { hash: key } })"
       >
-        {{ item.name }}
+        <span class="grow">
+          {{ item.name }}
+        </span>
+        <button class="absolute hover:text-neutral-500 text-neutral-400 right-2">
+          <TrashIcon class="w-5" />
+        </button>
       </li>
       <li v-show="showNewItemInput">
         <div class="flex gap-2">
