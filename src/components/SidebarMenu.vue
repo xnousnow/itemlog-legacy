@@ -80,7 +80,9 @@ export default defineComponent({
         <span class="grow">
           {{ item.name }}
         </span>
-        <button class="absolute hover:text-neutral-500 text-neutral-400 right-2">
+        <button
+          class="absolute -translate-y-1/2 top-1/2 hover:text-neutral-500 text-neutral-400 right-2"
+        >
           <TrashIcon class="w-5" />
         </button>
       </li>
