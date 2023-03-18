@@ -30,7 +30,9 @@ const messages = {
         title: 'Nothing here...',
         message: 'Your logs will be here after creating some items.'
       }
-    }
+    },
+    save: 'Save',
+    cancel: 'Cancel'
   },
   ko: {
     sidebar: {
@@ -49,7 +51,9 @@ const messages = {
         title: '아직은 텅텅 비었네요...',
         message: '일단 아이템을 만들어보는 건 어때요?'
       }
-    }
+    },
+    save: '저장',
+    cancel: '취소'
   }
 }
 

@@ -75,7 +75,7 @@ export default defineComponent({
         <div class="flex self-end w-40 gap-2">
           <button
             class="flex items-center justify-center p-2 grow rounded-lg active:filter active:brightness-[0.98] bg-blue-500 hover:bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-300"
-            title="Save"
+            :title="$t('save')"
             @click="$emit('save', index, editedBody)"
           >
             <CheckIcon class="w-6" />
@@ -83,7 +83,7 @@ export default defineComponent({
           <button
             v-if="xToDelete"
             class="flex items-center justify-center p-2 rounded-lg active:filter active:brightness-[0.98] bg-red-500 hover:bg-red-600 text-white focus:outline-none focus:ring-2 focus:ring-red-300"
-            title="Cancel"
+            :title="$t('cancel')"
             @click="$emit('remove', index)"
           >
             <XMarkIcon class="w-6" />
@@ -91,7 +91,7 @@ export default defineComponent({
           <button
             v-else
             class="flex items-center justify-center p-2 rounded-lg active:filter active:brightness-[0.98] bg-red-500 hover:bg-red-600 text-white focus:outline-none focus:ring-2 focus:ring-red-300"
-            title="Cancel"
+            :title="$t('cancel')"
             @click="$emit('save', index, body)"
           >
             <XMarkIcon class="w-6" />
