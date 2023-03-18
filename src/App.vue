@@ -26,7 +26,9 @@ export default defineComponent({
   },
   methods: {
     createItem(name: string) {
-      const id: string = sha256(name + new Date().toISOString()).toString()
+      const id: string = sha256(name + new Date().toISOString())
+        .toString()
+        .slice(0, 8)
       this.items[id] = {
         name,
         body: {}
