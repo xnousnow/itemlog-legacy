@@ -67,7 +67,7 @@ export default defineComponent({
         </div>
       </div>
       <p v-if="!editmode" class="grow">{{ body }}</p>
-      <div v-else class="flex flex-col w-full gap-2">
+      <div v-else class="flex flex-col w-full gap-3">
         <textarea
           v-model="editedBody"
           class="w-full h-40 p-3 transition duration-200 ease-in-out rounded-lg resize-none min-h-32 grow focus:outline-none bg-neutral-100 scroll-p-3 focus:ring-2 focus:ring-blue-600 focus:bg-neutral-50"
