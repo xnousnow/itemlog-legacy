@@ -77,7 +77,7 @@ export default defineComponent({
       <li
         v-for="(item, key) in items"
         :key="key"
-        class="relative flex p-2 pl-4 rounded-lg hover:bg-neutral-100"
+        class="relative flex p-2 pl-4 rounded-lg hover:bg-neutral-100 group"
         :class="{ active: $route.query.hash == key }"
         @click="$router.push({ query: { hash: key } })"
       >
@@ -85,7 +85,8 @@ export default defineComponent({
           {{ item.name }}
         </span>
         <button
-          class="absolute -translate-y-1/2 top-1/2 hover:text-neutral-500 text-neutral-400 right-2"
+          class="absolute -translate-y-1/2 top-1/2 hover:text-neutral-500 text-neutral-400 right-2 group-hover:block"
+          :class="{ hidden: $route.query.hash != key }"
           @click="deleteItem($event, key)"
         >
           <TrashIcon class="w-5" />
