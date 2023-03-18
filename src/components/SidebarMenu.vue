@@ -77,7 +77,7 @@ export default defineComponent({
       <li
         v-for="(item, key) in items"
         :key="key"
-        class="relative flex p-2 pl-4 rounded-lg hover:bg-neutral-100 group"
+        class="relative flex p-2 pl-4 rounded-lg hover:bg-neutral-50 group"
         :class="{ active: $route.query.hash == key }"
         @click="$router.push({ query: { hash: key } })"
       >
@@ -115,6 +115,6 @@ export default defineComponent({
 
 <style>
 li.active {
-  @apply bg-neutral-100;
+  @apply bg-neutral-100 hover:bg-neutral-100;
 }
 </style>
