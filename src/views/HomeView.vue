@@ -58,7 +58,7 @@ export default defineComponent({
   watch: {
     $route() {
       this.item = this.items[this.$route.query.hash as string]
-      this.body = this.items[this.$route.query.hash as string].body
+      this.body = this.items[this.$route.query.hash as string]?.body
     }
   },
   components: {
@@ -92,7 +92,12 @@ export default defineComponent({
     </button>
   </ul>
   <div v-else class="flex items-center justify-center h-screen grow">
-    <div class="flex flex-col items-center gap-2" v-if="$route.query.hash">
+    <div class="flex flex-col items-center gap-2" v-if="$route.query.hash == 'deleted'">
+      <img src="speech_bubble_falling.svg" alt="Speech bubble that says plus icon." class="w-64" />
+      <h3 class="text-2xl font-semibold">Item successfully deleted!</h3>
+      <p>You will see an error when you try to access this item later.</p>
+    </div>
+    <div class="flex flex-col items-center gap-2" v-else-if="$route.query.hash">
       <img src="speech_bubble_error.svg" alt="Speech bubble that has error." class="w-64" />
       <h3 class="text-2xl font-semibold">There is no such item as...</h3>
       <p>We can't find that item. Sorry!</p>
