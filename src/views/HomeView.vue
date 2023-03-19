@@ -93,17 +93,29 @@ export default defineComponent({
   </ul>
   <div v-else class="flex items-center justify-center h-screen grow">
     <div class="flex flex-col items-center gap-2" v-if="$route.query.hash == 'deleted'">
-      <img src="speech_bubble_falling.svg" alt="Speech bubble that says plus icon." class="w-64" />
+      <img
+        src="../assets/speech_bubble_falling.svg"
+        alt="Speech bubble that says plus icon."
+        class="w-64"
+      />
       <h3 class="text-2xl font-semibold">{{ $t('itemnotice.deleted.title') }}</h3>
       <p>{{ $t('itemnotice.deleted.message') }}</p>
     </div>
     <div class="flex flex-col items-center gap-2" v-else-if="$route.query.hash">
-      <img src="speech_bubble_error.svg" alt="Speech bubble that has error." class="w-64" />
+      <img
+        src="../assets/speech_bubble_error.svg"
+        alt="Speech bubble that has error."
+        class="w-64"
+      />
       <h3 class="text-2xl font-semibold">{{ $t('itemnotice.notFound.title') }}</h3>
       <p>{{ $t('itemnotice.notFound.message') }}</p>
     </div>
     <div class="flex flex-col items-center gap-2" v-else>
-      <img src="plus_speech_bubble.svg" alt="Speech bubble that says plus icon." class="w-64" />
+      <img
+        src="../assets/plus_speech_bubble.svg"
+        alt="Speech bubble that says plus icon."
+        class="w-64"
+      />
       <h3 class="text-2xl font-semibold">{{ $t('itemnotice.noData.title') }}</h3>
       <p>{{ $t('itemnotice.noData.message') }}</p>
     </div>
