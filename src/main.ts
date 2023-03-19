@@ -50,8 +50,8 @@ const messages = {
         message: '존재하지 않는 아이템이에요. 죄송합니다!'
       },
       noData: {
-        title: '아직은 텅텅 비었네요...',
-        message: '일단 아이템을 만들어보는 건 어때요?'
+        title: '아직 아무것도 없어요',
+        message: '아이템을 만들어 시작하세요!'
       }
     },
     save: '저장',
