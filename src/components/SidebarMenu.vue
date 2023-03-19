@@ -73,11 +73,11 @@ export default defineComponent({
         <PlusIcon class="w-6 text-blue-600 cursor-pointer" @click="showNewItemInput = true" />
       </button>
     </div>
-    <ul class="h-full px-3 pb-5 overflow-y-scroll cursor-pointer select-none">
+    <ul class="h-full px-3 pb-5 overflow-y-scroll select-none">
       <li
         v-for="(item, key) in items"
         :key="key"
-        class="relative flex p-2 pl-4 mb-1 rounded-lg hover:bg-neutral-50 group"
+        class="relative flex p-2 pl-4 mb-1 rounded-lg cursor-pointer hover:bg-neutral-50 group"
         :class="{ active: $route.query.hash == key }"
         @click="$router.push({ query: { hash: key } })"
       >
