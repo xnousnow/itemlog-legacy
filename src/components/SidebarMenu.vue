@@ -66,18 +66,18 @@ export default defineComponent({
 </script>
 
 <template>
-  <aside class="flex flex-col h-screen gap-2 pt-8 pb-5 border-r select-none w-72">
+  <aside class="flex flex-col h-screen gap-2 pt-8 border-r select-none w-72">
     <div class="flex items-center justify-between ml-5 mr-3">
       <h1 class="text-3xl font-bold">ItemLog</h1>
       <button class="p-1 rounded-lg hover:bg-neutral-100 active:filter active:bg-neutral-200">
         <PlusIcon class="w-6 text-blue-600 cursor-pointer" @click="showNewItemInput = true" />
       </button>
     </div>
-    <ul class="mx-3 cursor-pointer select-none">
+    <ul class="h-full px-3 pb-5 overflow-y-scroll select-none">
       <li
         v-for="(item, key) in items"
         :key="key"
-        class="relative flex p-2 pl-4 rounded-lg hover:bg-neutral-50 group"
+        class="relative flex p-2 pl-4 mb-1 rounded-lg cursor-pointer hover:bg-neutral-50 group"
         :class="{ active: $route.query.hash == key }"
         @click="$router.push({ query: { hash: key } })"
       >
@@ -95,9 +95,9 @@ export default defineComponent({
       <li v-show="showNewItemInput">
         <div class="flex gap-2">
           <input
-            class="p-2 pl-4 transition duration-200 ease-in-out rounded-lg grow bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            class="z-50 p-2 pl-4 transition duration-200 ease-in-out rounded-lg grow bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
             :class="{ 'ring-2 ring-red-500 focus:ring-red-500': isItemNameDuplicate }"
-            placeholder="New item"
+            :placeholder="$t('sidebar.newItemPlaceholder')"
             v-model="newItemName"
             @keyup.enter="createItem"
           />
@@ -106,7 +106,7 @@ export default defineComponent({
           </button>
         </div>
         <span class="ml-2 text-xs text-red-600 cursor-default" v-show="isItemNameDuplicate">
-          Item name must be unique
+          {{ $t('sidebar.duplicateItemName') }}
         </span>
       </li>
     </ul>

@@ -69,7 +69,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <ul v-if="body" class="flex flex-col items-center justify-center p-10 grow">
+  <ul v-if="body" class="flex flex-col items-center h-screen p-10 overflow-y-scroll grow">
     <LogItem
       v-for="(log, index) in body"
       :index="parseInt(index)"
@@ -94,18 +94,18 @@ export default defineComponent({
   <div v-else class="flex items-center justify-center h-screen grow">
     <div class="flex flex-col items-center gap-2" v-if="$route.query.hash == 'deleted'">
       <img src="speech_bubble_falling.svg" alt="Speech bubble that says plus icon." class="w-64" />
-      <h3 class="text-2xl font-semibold">Item successfully deleted!</h3>
-      <p>You will see an error when you try to access this item later.</p>
+      <h3 class="text-2xl font-semibold">{{ $t('itemnotice.deleted.title') }}</h3>
+      <p>{{ $t('itemnotice.deleted.message') }}</p>
     </div>
     <div class="flex flex-col items-center gap-2" v-else-if="$route.query.hash">
       <img src="speech_bubble_error.svg" alt="Speech bubble that has error." class="w-64" />
-      <h3 class="text-2xl font-semibold">There is no such item as...</h3>
-      <p>We can't find that item. Sorry!</p>
+      <h3 class="text-2xl font-semibold">{{ $t('itemnotice.notFound.title') }}</h3>
+      <p>{{ $t('itemnotice.notFound.message') }}</p>
     </div>
     <div class="flex flex-col items-center gap-2" v-else>
       <img src="plus_speech_bubble.svg" alt="Speech bubble that says plus icon." class="w-64" />
-      <h3 class="text-2xl font-semibold">Nothing here...</h3>
-      <p>Your logs will be here after creating some items.</p>
+      <h3 class="text-2xl font-semibold">{{ $t('itemnotice.noData.title') }}</h3>
+      <p>{{ $t('itemnotice.noData.message') }}</p>
     </div>
   </div>
 </template>
