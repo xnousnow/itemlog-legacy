@@ -97,7 +97,7 @@ export default defineComponent({
           <input
             class="p-2 pl-4 transition duration-200 ease-in-out rounded-lg grow bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
             :class="{ 'ring-2 ring-red-500 focus:ring-red-500': isItemNameDuplicate }"
-            placeholder="New item"
+            :placeholder="$t('sidebar.newItemPlaceholder')"
             v-model="newItemName"
             @keyup.enter="createItem"
           />

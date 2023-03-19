@@ -15,6 +15,7 @@ app.use(router)
 const messages = {
   en: {
     sidebar: {
+      newItemPlaceholder: 'New item',
       duplicateItemName: 'Item name should be unique'
     },
     itemnotice: {
@@ -36,6 +37,7 @@ const messages = {
   },
   ko: {
     sidebar: {
+      newItemPlaceholder: '새 아이템',
       duplicateItemName: '아이템 이름이 중복되었습니다'
     },
     itemnotice: {
