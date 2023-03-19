@@ -66,14 +66,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <aside class="flex flex-col h-screen gap-2 pt-8 pb-5 border-r select-none w-72">
+  <aside class="flex flex-col h-screen gap-2 pt-8 border-r select-none w-72">
     <div class="flex items-center justify-between ml-5 mr-3">
       <h1 class="text-3xl font-bold">ItemLog</h1>
       <button class="p-1 rounded-lg hover:bg-neutral-100 active:filter active:bg-neutral-200">
         <PlusIcon class="w-6 text-blue-600 cursor-pointer" @click="showNewItemInput = true" />
       </button>
     </div>
-    <ul class="mx-3 cursor-pointer select-none">
+    <ul class="h-full px-3 pb-5 overflow-y-scroll cursor-pointer select-none">
       <li
         v-for="(item, key) in items"
         :key="key"
