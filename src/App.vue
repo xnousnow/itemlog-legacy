@@ -36,7 +36,6 @@ export default defineComponent({
       localStorage.setItem('items', JSON.stringify(this.items))
     },
     deleteItem(id: string) {
-      console.log('it pushed')
       this.$router.push({ query: { hash: 'deleted' } })
       delete this.items[id]
       localStorage.setItem('items', JSON.stringify(this.items))
