@@ -77,7 +77,7 @@ export default defineComponent({
       <li
         v-for="(item, key) in items"
         :key="key"
-        class="relative flex p-2 pl-4 rounded-lg hover:bg-neutral-50 group"
+        class="relative flex p-2 pl-4 mb-1 rounded-lg hover:bg-neutral-50 group"
         :class="{ active: $route.query.hash == key }"
         @click="$router.push({ query: { hash: key } })"
       >
@@ -95,7 +95,7 @@ export default defineComponent({
       <li v-show="showNewItemInput">
         <div class="flex gap-2">
           <input
-            class="p-2 pl-4 transition duration-200 ease-in-out rounded-lg grow bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            class="z-50 p-2 pl-4 transition duration-200 ease-in-out rounded-lg grow bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
             :class="{ 'ring-2 ring-red-500 focus:ring-red-500': isItemNameDuplicate }"
             :placeholder="$t('sidebar.newItemPlaceholder')"
             v-model="newItemName"
