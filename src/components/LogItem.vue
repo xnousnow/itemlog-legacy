@@ -99,7 +99,7 @@ export default defineComponent({
         </div>
       </div>
     </div>
-    <div class="absolute hidden w-full h-full opacity-0 -right-2 group-hover:block -z-50"></div>
+    <div class="absolute w-2 h-[5.5rem] -right-2 group-hover:block hidden"></div>
     <button
       v-show="!editmode"
       class="absolute flex-col items-center justify-center hidden overflow-hidden rounded-lg -right-14 group-hover:flex text-neutral-400 group-hover:w-auto bg-neutral-50"
