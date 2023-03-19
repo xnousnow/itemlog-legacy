@@ -55,6 +55,10 @@ export default defineComponent({
       localStorage.setItem('items', JSON.stringify(this.items))
     }
   },
+  mounted() {
+    const items = localStorage.getItem('items')
+    if (items) this.items = JSON.parse(items)
+  },
   components: {
     RouterView,
     SidebarMenu
