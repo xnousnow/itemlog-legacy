@@ -83,7 +83,7 @@ export default defineComponent({
           <span class="text-lg">/</span>
           <input
             type="number"
-            class="self-end text-left w-7 grow focus:outline-none"
+            class="self-end w-7 grow focus:outline-none"
             v-model="editedDay"
             :placeholder="(day as unknown as string)"
             inputmode="numeric"
