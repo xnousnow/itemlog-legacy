@@ -45,8 +45,16 @@ export default defineComponent({
         xToDelete: true
       }
     },
-    saveLog(index: number, text: string) {
-      this.$emit('save', index, text)
+    saveLog(index: number, month: number, date: number, text: string) {
+      let updatedMonth = month
+      let updatedDate = date
+      if (!month || month <= 0 || month > 12) {
+        updatedMonth = this.body[index].month
+      }
+      if (!date || date <= 0 || date > 31) {
+        updatedDate = this.body[index].day
+      }
+      this.$emit('save', index, updatedMonth, updatedDate, text)
     },
     editLog(index: number) {
       this.$emit('edit', index)
