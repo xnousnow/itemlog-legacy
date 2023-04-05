@@ -40,7 +40,9 @@ export default defineComponent({
       delete this.items[id]
       localStorage.setItem('items', JSON.stringify(this.items))
     },
-    changeLog(index: number, text: string) {
+    changeLog(index: number, month: number, date: number, text: string) {
+      this.items[this.$route.query.hash as string].body[index].month = month
+      this.items[this.$route.query.hash as string].body[index].day = date
       this.items[this.$route.query.hash as string].body[index].text = text
       this.items[this.$route.query.hash as string].body[index].editmode = false
       this.items[this.$route.query.hash as string].body[index].xToDelete = false
